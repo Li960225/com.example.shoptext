@@ -1,5 +1,6 @@
 plugins {
     id 'com.android.application'
+    id 'org.greenrobot.greendao' // apply plugin
 }
 
 android {
@@ -26,6 +27,11 @@ android {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+    greendao{
+        schemaVersion 1 //数据库版本号
+        daoPackage 'com.example.shoptext.dao'  //数据库全路径
+        targetGenDir 'src/main/java'  //存放位置
+    }
 }
 
 dependencies {
@@ -50,4 +56,8 @@ dependencies {
     implementation 'io.reactivex.rxjava2:rxjava:2.2.4'
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'//配合Rxjava 使用
+    implementation ('com.alibaba.android:vlayout:1.2.8@aar') { //VLayout
+        transitive = true
+    }
+    implementation 'org.greenrobot:greendao:3.3.0' // add library
 }
