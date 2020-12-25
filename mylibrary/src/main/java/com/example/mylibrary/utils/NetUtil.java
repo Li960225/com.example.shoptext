@@ -27,7 +27,6 @@ public class NetUtil implements NetInterface {
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder().build();
         apiService = new Retrofit.Builder()
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create())
                 .baseUrl(NetConstant.homeUrl)
                 .build().create(ApiService.class);
     }
@@ -58,8 +57,8 @@ public class NetUtil implements NetInterface {
                     public void onNext(@NonNull ResponseBody responseBody) {
                         try {
                             String string = responseBody.string();
-                            Type genericSuperclass = netCallBack.getClass().getGenericSuperclass();
-                            Type[] types = ((ParameterizedType) genericSuperclass).getActualTypeArguments();
+                            Type[] genericInterfaces = netCallBack.getClass().getGenericInterfaces();
+                            Type[] types = ((ParameterizedType) genericInterfaces[0]).getActualTypeArguments();
                             Type type = types[0];
                             netCallBack.onSuccess(new Gson().fromJson(string,type));
                         } catch (IOException e) {
