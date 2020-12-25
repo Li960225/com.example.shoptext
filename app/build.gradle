@@ -50,12 +50,6 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.2'//    上拉下拉刷新依赖
-    implementation 'com.squareup.retrofit2:retrofit:2.5.0'//retrofit依赖
-    implementation 'com.squareup.retrofit2:converter-gson:2.0.2'//数据解析器依赖
-    implementation 'com.squareup.retrofit2:converter-jackson:2.0.2'//数据解析器依赖
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.4'
-    implementation 'io.reactivex.rxjava2:rxandroid:2.1.0'
-    implementation 'com.squareup.retrofit2:adapter-rxjava2:2.5.0'//配合Rxjava 使用
     implementation ('com.alibaba.android:vlayout:1.2.8@aar') { //VLayout
         transitive = true
     }
