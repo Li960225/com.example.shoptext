@@ -24,8 +24,13 @@ public class EleventhAdapter extends DelegateAdapter.Adapter<EleventhAdapter.Vie
     private Context mContext;
     private LinearLayoutHelper linearLayoutHelper;
     private List<HomeBean.DataBean.TopicListBean> mData;
+    private OnClickListener onClickListener;
     private int position;
     private int xOffset;
+
+    public void setOnClickListener(OnClickListener onClickListener) {
+        this.onClickListener = onClickListener;
+    }
 
     public EleventhAdapter(Context mContext, LinearLayoutHelper linearLayoutHelper, List<HomeBean.DataBean.TopicListBean> mData) {
         this.mContext = mContext;
@@ -51,7 +56,14 @@ public class EleventhAdapter extends DelegateAdapter.Adapter<EleventhAdapter.Vie
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(mContext);
         linearLayoutManager.setOrientation(RecyclerView.HORIZONTAL);
         rveleventh.setLayoutManager(linearLayoutManager);
-        rveleventh.setAdapter(new EleventhHoziAdapter(mContext,mData));
+        EleventhHoziAdapter eleventhHoziAdapter = new EleventhHoziAdapter(mContext, mData);
+        rveleventh.setAdapter(eleventhHoziAdapter);
+        eleventhHoziAdapter.setOnClickListener(new EleventhHoziAdapter.OnClickListener() {
+            @Override
+            public void onClick(int position) {
+                onClickListener.onClick(position);
+            }
+        });
     }
 
     @Override
@@ -90,5 +102,9 @@ public class EleventhAdapter extends DelegateAdapter.Adapter<EleventhAdapter.Vie
             LinearLayoutManager manager = (LinearLayoutManager) recyclerView.getLayoutManager();
             manager.scrollToPositionWithOffset(position,xOffset);
         }
+    }
+
+    public interface OnClickListener{
+        void onClick(int position);
     }
 }

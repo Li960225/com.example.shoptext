@@ -20,6 +20,7 @@ import com.example.mylibrary.base.BaseView;
 import com.example.shoptext.R;
 import com.example.shoptext.adapter.EighthAdapter;
 import com.example.shoptext.adapter.EleventhAdapter;
+import com.example.shoptext.adapter.EleventhHoziAdapter;
 import com.example.shoptext.adapter.FifthAdapter;
 import com.example.shoptext.adapter.FirstAdapter;
 import com.example.shoptext.adapter.FourthAdapter;
@@ -135,15 +136,16 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
 
             }
         });
+        eleventhAdapter.setOnClickListener(new EleventhAdapter.OnClickListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
         twelfthAdapter.setOnClickListener(new TwelfthAdapter.OnClickListener() {
             @Override
-            public void onClick(int position, ThirteenthAdapter thirteenthAdapter) {
-                thirteenthAdapter.setOnClickListener(new ThirteenthAdapter.OnClickListener1() {
-                    @Override
-                    public void onClick(int position) {
+            public void onClick(int position) {
 
-                    }
-                });
             }
         });
     }
@@ -152,9 +154,7 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
         SingleLayoutHelper singleLayoutHelper = new SingleLayoutHelper();
 
         // 公共属性
-        singleLayoutHelper.setItemCount(1);// 设置布局里Item个数
         singleLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
-//        singleLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
         categoryListBeans = new ArrayList<>();
         twelfthAdapter = new TwelfthAdapter(getActivity(), singleLayoutHelper, categoryListBeans);
     }

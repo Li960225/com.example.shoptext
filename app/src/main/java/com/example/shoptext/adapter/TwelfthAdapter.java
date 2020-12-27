@@ -55,10 +55,16 @@ public class TwelfthAdapter extends DelegateAdapter.Adapter {
         rvtwelfth.setLayoutManager(new GridLayoutManager(mContext,2));
         ThirteenthAdapter thirteenthAdapter = new ThirteenthAdapter(mContext, mData.get(position).getGoodsList());
         rvtwelfth.setAdapter(thirteenthAdapter);
-        viewHolder_o.rvtwelfth.setOnClickListener(new View.OnClickListener() {
+//        viewHolder_o.rvtwelfth.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                onClickListener.onClick(position,thirteenthAdapter);
+//            }
+//        });
+        thirteenthAdapter.setOnClickListener(new ThirteenthAdapter.OnClickListener1() {
             @Override
-            public void onClick(View v) {
-                onClickListener.onClick(position,thirteenthAdapter);
+            public void onClick(int position) {
+                onClickListener.onClick(position);
             }
         });
     }
@@ -79,6 +85,6 @@ public class TwelfthAdapter extends DelegateAdapter.Adapter {
     }
 
     public interface OnClickListener{
-        void onClick(int position,ThirteenthAdapter thirteenthAdapter);
+        void onClick(int position);
     }
 }
