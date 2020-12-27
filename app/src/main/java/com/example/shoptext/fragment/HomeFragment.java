@@ -101,6 +101,51 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
         delegateAdapter.addAdapter(eleventhAdapter);
         delegateAdapter.addAdapter(twelfthAdapter);
         rv_home.setAdapter(delegateAdapter);
+        initListener();
+    }
+
+    private void initListener() {
+        firstAdapter.setOnClickListener(new FirstAdapter.OnClickListener() {
+            @Override
+            public void onClick() {
+
+            }
+        });
+        thirdAdapter.setOnClickListener(new ThirdAdapter.OnClickListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
+        fifthAdapter.setOnClickListener(new FifthAdapter.OnClickListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
+        seventhAdapter.setOnClickListener(new SeventhAdapter.OnClickListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
+        ninthAdapter.setOnClickListener(new NinthAdapter.OnClickListener() {
+            @Override
+            public void onClick(int position) {
+
+            }
+        });
+        twelfthAdapter.setOnClickListener(new TwelfthAdapter.OnClickListener() {
+            @Override
+            public void onClick(int position, ThirteenthAdapter thirteenthAdapter) {
+                thirteenthAdapter.setOnClickListener(new ThirteenthAdapter.OnClickListener1() {
+                    @Override
+                    public void onClick(int position) {
+
+                    }
+                });
+            }
+        });
     }
 
     private void twelfthlayout() {
@@ -109,7 +154,7 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
         // 公共属性
         singleLayoutHelper.setItemCount(1);// 设置布局里Item个数
         singleLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
-        singleLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
+//        singleLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
         categoryListBeans = new ArrayList<>();
         twelfthAdapter = new TwelfthAdapter(getActivity(), singleLayoutHelper, categoryListBeans);
     }

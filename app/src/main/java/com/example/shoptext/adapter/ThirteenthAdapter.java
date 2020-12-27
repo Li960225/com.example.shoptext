@@ -22,10 +22,10 @@ import java.util.List;
 public class ThirteenthAdapter extends RecyclerView.Adapter<ThirteenthAdapter.ViewHolder> {
     private Context mContext;
     private List<HomeBean.DataBean.CategoryListBean.GoodsListBean> mData;
-    private OnClickListener onClickListener;
+    private OnClickListener1 onClickListener1;
 
-    public void setOnClickListener(OnClickListener onClickListener) {
-        this.onClickListener = onClickListener;
+    public void setOnClickListener(OnClickListener1 onClickListener1) {
+        this.onClickListener1 = onClickListener1;
     }
 
     public ThirteenthAdapter(Context mContext, List<HomeBean.DataBean.CategoryListBean.GoodsListBean> mData) {
@@ -50,7 +50,7 @@ public class ThirteenthAdapter extends RecyclerView.Adapter<ThirteenthAdapter.Vi
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                onClickListener.onClick(position);
+                onClickListener1.onClick(position);
             }
         });
     }
@@ -72,7 +72,7 @@ public class ThirteenthAdapter extends RecyclerView.Adapter<ThirteenthAdapter.Vi
         }
     }
 
-    public interface OnClickListener{
+    public interface OnClickListener1{
         void onClick(int position);
     }
 }
