@@ -29,6 +29,8 @@ import com.example.shoptext.adapter.SeventhAdapter;
 import com.example.shoptext.adapter.SixthAdapter;
 import com.example.shoptext.adapter.TenthAdapter;
 import com.example.shoptext.adapter.ThirdAdapter;
+import com.example.shoptext.adapter.ThirteenthAdapter;
+import com.example.shoptext.adapter.TwelfthAdapter;
 import com.example.shoptext.bean.HomeBean;
 import com.example.shoptext.contract.HomeContract;
 import com.example.shoptext.presenter.HomePresenterImp;
@@ -36,7 +38,7 @@ import com.example.shoptext.presenter.HomePresenterImp;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeFragment extends BaseFragment<HomePresenterImp> implements HomeContract.iHomeView,BaseView {
+public class HomeFragment extends BaseFragment<HomePresenterImp> implements HomeContract.iHomeView, BaseView {
 
     private FirstAdapter firstAdapter;
     private ArrayList<HomeBean.DataBean.BannerBean> bannerBeans;
@@ -55,6 +57,9 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
     private TenthAdapter tenthAdapter;
     private ArrayList<HomeBean.DataBean.TopicListBean> topicListBeans;
     private EleventhAdapter eleventhAdapter;
+    private TwelfthAdapter twelfthAdapter;
+    private ArrayList<HomeBean.DataBean.CategoryListBean> categoryListBeans;
+    private DelegateAdapter delegateAdapter;
 
     @Override
     protected void initData() {
@@ -69,7 +74,7 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
         rv_home.setLayoutManager(layoutManager);
         RecyclerView.RecycledViewPool viewPool = new RecyclerView.RecycledViewPool();
         rv_home.setRecycledViewPool(viewPool);
-        viewPool.setMaxRecycledViews(0,20);
+        viewPool.setMaxRecycledViews(0, 20);
         firstlayout();
         secondlayout();
         thirdlayout();
@@ -82,8 +87,7 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
         tenthlayout();
         eleventhlayout();
         twelfthlayout();
-        thirteenthlayout();
-        DelegateAdapter delegateAdapter = new DelegateAdapter(layoutManager, false);
+        delegateAdapter = new DelegateAdapter(layoutManager, false);
         delegateAdapter.addAdapter(firstAdapter);
         delegateAdapter.addAdapter(secondAdapter);
         delegateAdapter.addAdapter(thirdAdapter);
@@ -95,36 +99,19 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
         delegateAdapter.addAdapter(ninthAdapter);
         delegateAdapter.addAdapter(tenthAdapter);
         delegateAdapter.addAdapter(eleventhAdapter);
+        delegateAdapter.addAdapter(twelfthAdapter);
         rv_home.setAdapter(delegateAdapter);
-    }
-
-    private void thirteenthlayout() {
-        /**
-         设置Grid布局
-         */
-        GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(2);
-
-        // 公共属性
-        gridLayoutHelper.setItemCount(4);// 设置布局里Item个数
-        gridLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
-
-        // gridLayoutHelper特有属性（下面会详细说明）
-        gridLayoutHelper.setWeights(new float[]{50, 50});//设置每行中 每个网格宽度 占 每行总宽度 的比例
-        gridLayoutHelper.setVGap(5);// 控制子元素之间的垂直间距
-        gridLayoutHelper.setHGap(5);// 控制子元素之间的水平间距
-        gridLayoutHelper.setAutoExpand(false);//是否自动填充空白区域
-        gridLayoutHelper.setSpanCount(2);// 设置每行多少个网格
     }
 
     private void twelfthlayout() {
         SingleLayoutHelper singleLayoutHelper = new SingleLayoutHelper();
 
         // 公共属性
-        singleLayoutHelper.setItemCount(3);// 设置布局里Item个数
+        singleLayoutHelper.setItemCount(1);// 设置布局里Item个数
         singleLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
         singleLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
-        eighthAdapter = new EighthAdapter(getActivity(), singleLayoutHelper);
-        tenthAdapter = new TenthAdapter(getActivity(), singleLayoutHelper);
+        categoryListBeans = new ArrayList<>();
+        twelfthAdapter = new TwelfthAdapter(getActivity(), singleLayoutHelper, categoryListBeans);
     }
 
     private void eleventhlayout() {
@@ -177,7 +164,7 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
 
     private void seventhlayout() {
         /**
-        设置Grid布局
+         设置Grid布局
          */
         GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(2);
 
@@ -232,7 +219,7 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
         singleLayoutHelper.setItemCount(1);// 设置布局里Item个数
         singleLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
         singleLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
-        fourthAdapter = new FourthAdapter(getActivity(),singleLayoutHelper);
+        fourthAdapter = new FourthAdapter(getActivity(), singleLayoutHelper);
     }
 
     private void thirdlayout() {
@@ -309,6 +296,9 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
         List<HomeBean.DataBean.TopicListBean> topicList = data.getTopicList();
         topicListBeans.addAll(topicList);
         eleventhAdapter.notifyDataSetChanged();
+        List<HomeBean.DataBean.CategoryListBean> categoryList = data.getCategoryList();
+        categoryListBeans.addAll(categoryList);
+        twelfthAdapter.notifyDataSetChanged();
     }
 
     @Override
