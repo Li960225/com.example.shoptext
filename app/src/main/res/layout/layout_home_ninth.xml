@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <view
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"/>
+    <ImageView
+        android:id="@+id/iv_ninth_img"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="2dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"/>
+    <TextView
+        android:id="@+id/tv_ninth_name"
+        app:layout_constraintTop_toTopOf="@id/iv_ninth_img"
+        app:layout_constraintLeft_toRightOf="@id/iv_ninth_img"
+        android:layout_margin="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/tv_ninth_brief"
+        app:layout_constraintTop_toTopOf="@id/iv_ninth_img"
+        app:layout_constraintBottom_toBottomOf="@id/iv_ninth_img"
+        app:layout_constraintLeft_toRightOf="@id/iv_ninth_img"
+        android:layout_marginLeft="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <TextView
+        android:id="@+id/tv_ninth_price"
+        app:layout_constraintBottom_toBottomOf="@id/iv_ninth_img"
+        app:layout_constraintLeft_toRightOf="@id/iv_ninth_img"
+        android:layout_margin="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

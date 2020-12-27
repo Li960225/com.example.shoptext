@@ -51,7 +51,11 @@ public class FifthAdapter extends DelegateAdapter.Adapter {
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         FifthAdapter.ViewHolder_t viewHolder_t = (FifthAdapter.ViewHolder_t) holder;
-        Glide.with(mContext).load(mData.get(position).getNew_pic_url()).into(viewHolder_t.iv_img_t);
+        String new_pic_url = mData.get(position).getNew_pic_url();
+        StringBuffer stringBuffer = new StringBuffer();
+        stringBuffer.append(new_pic_url);
+        stringBuffer.insert(4,"s");
+        Glide.with(mContext).load(stringBuffer.toString()).into(viewHolder_t.iv_img_t);
         viewHolder_t.tv_name.setText(mData.get(position).getName());
         viewHolder_t.tv_price.setText(mData.get(position).getFloor_price()+"");
         viewHolder_t.itemView.setOnClickListener(new View.OnClickListener() {

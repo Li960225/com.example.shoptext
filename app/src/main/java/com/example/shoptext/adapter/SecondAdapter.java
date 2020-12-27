@@ -1,6 +1,7 @@
 package com.example.shoptext.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,7 +50,11 @@ public class SecondAdapter extends DelegateAdapter.Adapter<SecondAdapter.ViewHol
             @Override
             public void displayImage(Context context, Object path, ImageView imageView) {
                 HomeBean.DataBean.BannerBean db = (HomeBean.DataBean.BannerBean) path;
-                Glide.with(context).load(db.getImage_url()).into(imageView);
+                String image_url = db.getImage_url();
+                StringBuffer stringBuffer = new StringBuffer();
+                stringBuffer.append(image_url);
+                stringBuffer.insert(4,"s");
+                Glide.with(context).load(stringBuffer.toString()).into(imageView);
             }
         }).start();
     }
