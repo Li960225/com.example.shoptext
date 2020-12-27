@@ -19,12 +19,15 @@ import com.example.mylibrary.base.BasePresenter;
 import com.example.mylibrary.base.BaseView;
 import com.example.shoptext.R;
 import com.example.shoptext.adapter.EighthAdapter;
+import com.example.shoptext.adapter.EleventhAdapter;
 import com.example.shoptext.adapter.FifthAdapter;
 import com.example.shoptext.adapter.FirstAdapter;
 import com.example.shoptext.adapter.FourthAdapter;
+import com.example.shoptext.adapter.NinthAdapter;
 import com.example.shoptext.adapter.SecondAdapter;
 import com.example.shoptext.adapter.SeventhAdapter;
 import com.example.shoptext.adapter.SixthAdapter;
+import com.example.shoptext.adapter.TenthAdapter;
 import com.example.shoptext.adapter.ThirdAdapter;
 import com.example.shoptext.bean.HomeBean;
 import com.example.shoptext.contract.HomeContract;
@@ -47,6 +50,11 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
     private ArrayList<HomeBean.DataBean.NewGoodsListBean> newGoodsListBeans;
     private SeventhAdapter seventhAdapter;
     private EighthAdapter eighthAdapter;
+    private ArrayList<HomeBean.DataBean.HotGoodsListBean> hotGoodsListBeans;
+    private NinthAdapter ninthAdapter;
+    private TenthAdapter tenthAdapter;
+    private ArrayList<HomeBean.DataBean.TopicListBean> topicListBeans;
+    private EleventhAdapter eleventhAdapter;
 
     @Override
     protected void initData() {
@@ -71,6 +79,10 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
         seventhlayout();
         eighthlayout();
         ninthlayout();
+        tenthlayout();
+        eleventhlayout();
+        twelfthlayout();
+        thirteenthlayout();
         DelegateAdapter delegateAdapter = new DelegateAdapter(layoutManager, false);
         delegateAdapter.addAdapter(firstAdapter);
         delegateAdapter.addAdapter(secondAdapter);
@@ -80,7 +92,63 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
         delegateAdapter.addAdapter(sixthAdapter);
         delegateAdapter.addAdapter(seventhAdapter);
         delegateAdapter.addAdapter(eighthAdapter);
+        delegateAdapter.addAdapter(ninthAdapter);
+        delegateAdapter.addAdapter(tenthAdapter);
+        delegateAdapter.addAdapter(eleventhAdapter);
         rv_home.setAdapter(delegateAdapter);
+    }
+
+    private void thirteenthlayout() {
+        /**
+         设置Grid布局
+         */
+        GridLayoutHelper gridLayoutHelper = new GridLayoutHelper(2);
+
+        // 公共属性
+        gridLayoutHelper.setItemCount(4);// 设置布局里Item个数
+        gridLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+
+        // gridLayoutHelper特有属性（下面会详细说明）
+        gridLayoutHelper.setWeights(new float[]{50, 50});//设置每行中 每个网格宽度 占 每行总宽度 的比例
+        gridLayoutHelper.setVGap(5);// 控制子元素之间的垂直间距
+        gridLayoutHelper.setHGap(5);// 控制子元素之间的水平间距
+        gridLayoutHelper.setAutoExpand(false);//是否自动填充空白区域
+        gridLayoutHelper.setSpanCount(2);// 设置每行多少个网格
+    }
+
+    private void twelfthlayout() {
+        SingleLayoutHelper singleLayoutHelper = new SingleLayoutHelper();
+
+        // 公共属性
+        singleLayoutHelper.setItemCount(3);// 设置布局里Item个数
+        singleLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        singleLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
+        eighthAdapter = new EighthAdapter(getActivity(), singleLayoutHelper);
+        tenthAdapter = new TenthAdapter(getActivity(), singleLayoutHelper);
+    }
+
+    private void eleventhlayout() {
+        LinearLayoutHelper linearLayoutHelper = new LinearLayoutHelper();
+        // 创建对应的LayoutHelper对象
+
+        // 所有布局的公共属性（属性会在下面详细说明）
+        linearLayoutHelper.setItemCount(1);// 设置布局里Item个数
+        linearLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+
+        // linearLayoutHelper特有属性
+        linearLayoutHelper.setDividerHeight(1); // 设置每行Item的距离
+        topicListBeans = new ArrayList<>();
+        eleventhAdapter = new EleventhAdapter(getActivity(), linearLayoutHelper, topicListBeans);
+    }
+
+    private void tenthlayout() {
+        SingleLayoutHelper singleLayoutHelper = new SingleLayoutHelper();
+
+        // 公共属性
+        singleLayoutHelper.setItemCount(1);// 设置布局里Item个数
+        singleLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
+        singleLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
+        tenthAdapter = new TenthAdapter(getActivity(), singleLayoutHelper);
     }
 
     private void ninthlayout() {
@@ -93,13 +161,15 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
 
         // linearLayoutHelper特有属性
         linearLayoutHelper.setDividerHeight(1); // 设置每行Item的距离
+        hotGoodsListBeans = new ArrayList<>();
+        ninthAdapter = new NinthAdapter(getActivity(), linearLayoutHelper, hotGoodsListBeans);
     }
 
     private void eighthlayout() {
         SingleLayoutHelper singleLayoutHelper = new SingleLayoutHelper();
 
         // 公共属性
-        singleLayoutHelper.setItemCount(3);// 设置布局里Item个数
+        singleLayoutHelper.setItemCount(1);// 设置布局里Item个数
         singleLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
         singleLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
         eighthAdapter = new EighthAdapter(getActivity(), singleLayoutHelper);
@@ -129,7 +199,7 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
         SingleLayoutHelper singleLayoutHelper = new SingleLayoutHelper();
 
         // 公共属性
-        singleLayoutHelper.setItemCount(3);// 设置布局里Item个数
+        singleLayoutHelper.setItemCount(1);// 设置布局里Item个数
         singleLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
         singleLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
         sixthAdapter = new SixthAdapter(getActivity(), singleLayoutHelper);
@@ -159,7 +229,7 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
         SingleLayoutHelper singleLayoutHelper = new SingleLayoutHelper();
 
         // 公共属性
-        singleLayoutHelper.setItemCount(3);// 设置布局里Item个数
+        singleLayoutHelper.setItemCount(1);// 设置布局里Item个数
         singleLayoutHelper.setBgColor(Color.WHITE);// 设置背景颜色
         singleLayoutHelper.setAspectRatio(6);// 设置设置布局内每行布局的宽与高的比
         fourthAdapter = new FourthAdapter(getActivity(),singleLayoutHelper);
@@ -233,6 +303,12 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
         List<HomeBean.DataBean.NewGoodsListBean> newGoodsList = data.getNewGoodsList();
         newGoodsListBeans.addAll(newGoodsList);
         seventhAdapter.notifyDataSetChanged();
+        List<HomeBean.DataBean.HotGoodsListBean> hotGoodsList = data.getHotGoodsList();
+        hotGoodsListBeans.addAll(hotGoodsList);
+        ninthAdapter.notifyDataSetChanged();
+        List<HomeBean.DataBean.TopicListBean> topicList = data.getTopicList();
+        topicListBeans.addAll(topicList);
+        eleventhAdapter.notifyDataSetChanged();
     }
 
     @Override
