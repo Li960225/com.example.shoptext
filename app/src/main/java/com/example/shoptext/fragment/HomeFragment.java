@@ -144,8 +144,8 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
         });
         twelfthAdapter.setOnClickListener(new TwelfthAdapter.OnClickListener() {
             @Override
-            public void onClick(int position) {
-
+            public void onClick(int pos, int position) {
+                Toast.makeText(getActivity(), categoryListBeans.get(pos).getGoodsList().get(position).getName(), Toast.LENGTH_SHORT).show();
             }
         });
     }
