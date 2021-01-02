@@ -2,6 +2,7 @@ package com.example.shoptext.contract;
 
 import com.example.mylibrary.utils.NetCallBack;
 import com.example.shoptext.bean.HomeBean;
+import com.example.shoptext.bean.SpecialBean;
 
 import java.util.List;
 
@@ -15,5 +16,16 @@ public class HomeContract {
     }
     public interface iHomeModel{
         <T> void getHomeData(String url, NetCallBack<T> netCallBack);
+    }
+
+    public interface iSpecialView{
+        void onSpecialSuccess(List<SpecialBean.DataBean.DataBeans> data);
+        void onSpecialFail(String error);
+    }
+    public interface iSpecialPresenter{
+        void getData();
+    }
+    public interface iSpecialModel{
+        <T> void getSpecialData(String url, NetCallBack<T> netCallBack);
     }
 }

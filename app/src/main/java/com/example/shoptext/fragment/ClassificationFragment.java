@@ -8,14 +8,30 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.mylibrary.base.BaseFragment;
+import com.example.mylibrary.base.BasePresenter;
+import com.example.mylibrary.base.BaseView;
 import com.example.shoptext.R;
 
-public class ClassificationFragment extends Fragment {
+public class ClassificationFragment extends BaseFragment implements BaseView {
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_classification, container, false);
+    protected void initData() {
+
+    }
+
+    @Override
+    protected void initView(View view) {
+
+    }
+
+    @Override
+    protected int getLayout() {
+        return R.layout.fragment_classification;
+    }
+
+    @Override
+    protected BasePresenter getPresenter() {
+        return null;
     }
 }
