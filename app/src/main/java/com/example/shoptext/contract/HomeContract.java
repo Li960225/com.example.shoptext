@@ -3,8 +3,10 @@ package com.example.shoptext.contract;
 import com.example.mylibrary.utils.NetCallBack;
 import com.example.shoptext.bean.ClassificationBean;
 import com.example.shoptext.bean.HomeBean;
+import com.example.shoptext.bean.LoginBean;
 import com.example.shoptext.bean.SpecialBean;
 
+import java.util.HashMap;
 import java.util.List;
 
 public class HomeContract {
@@ -39,5 +41,16 @@ public class HomeContract {
     }
     public interface iClassificationModel{
         <T> void getClassificationData(String url, NetCallBack<T> netCallBack);
+    }
+
+    public interface iMineView{
+        void onMineSuccess(List<LoginBean.DataBean> data);
+        void onMineFail(String error);
+    }
+    public interface iMinePresenter{
+        void getData();
+    }
+    public interface iMineModel{
+        <T> void getMineData(String url, HashMap<String,String> map, NetCallBack<T> netCallBack);
     }
 }

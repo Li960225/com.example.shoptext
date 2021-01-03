@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.mylibrary.base.BaseFragment;
 import com.example.mylibrary.base.BasePresenter;
@@ -63,7 +64,7 @@ public class ClassificationFragment extends BaseFragment<ClassificationPresenter
 
     @Override
     public void onClassificationFail(String error) {
-
+        Toast.makeText(getActivity(), error, Toast.LENGTH_SHORT).show();
     }
 
     @Override
