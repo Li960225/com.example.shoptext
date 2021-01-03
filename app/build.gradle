@@ -55,5 +55,4 @@ dependencies {
         transitive = true
     }
     implementation 'org.greenrobot:greendao:3.3.0' // add library
-    implementation 'q.rorbin:VerticalTabLayout:1.2.5'
 }

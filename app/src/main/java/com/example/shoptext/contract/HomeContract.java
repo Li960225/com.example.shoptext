@@ -1,6 +1,7 @@
 package com.example.shoptext.contract;
 
 import com.example.mylibrary.utils.NetCallBack;
+import com.example.shoptext.bean.ClassificationBean;
 import com.example.shoptext.bean.HomeBean;
 import com.example.shoptext.bean.SpecialBean;
 
@@ -27,5 +28,16 @@ public class HomeContract {
     }
     public interface iSpecialModel{
         <T> void getSpecialData(String url, NetCallBack<T> netCallBack);
+    }
+
+    public interface iClassificationView{
+        void onClassificationSuccess(List<ClassificationBean.DataBean.CategoryListBean> data);
+        void onClassificationFail(String error);
+    }
+    public interface iClassificationPresenter{
+        void getData();
+    }
+    public interface iClassificationModel{
+        <T> void getClassificationData(String url, NetCallBack<T> netCallBack);
     }
 }

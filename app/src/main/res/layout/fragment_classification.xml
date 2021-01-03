@@ -5,14 +5,17 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.ClassificationFragment">
-    <q.rorbin.verticaltablayout.VerticalTabLayout
-        android:id="@+id/vtl_classification"
-        app:layout_constraintLeft_toLeftOf="parent"
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_classification"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:orientation="vertical"
+        android:layout_width="100dp"
+        android:background="#4CAF50"
         android:layout_height="wrap_content"/>
     <FrameLayout
-        app:layout_constraintLeft_toRightOf="@id/vtl_classification"
+        android:id="@+id/fl_classification"
+        app:layout_constraintLeft_toRightOf="@id/tab_classification"
         app:layout_constraintRight_toRightOf="parent"
         android:layout_width="0dp"
         android:layout_height="match_parent"/>
