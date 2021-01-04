@@ -55,4 +55,5 @@ dependencies {
         transitive = true
     }
     implementation 'org.greenrobot:greendao:3.3.0' // add library
+    implementation 'com.tencent:mmkv-static:1.2.7'
 }

@@ -18,6 +18,8 @@ import okhttp3.ResponseBody;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Header;
+import retrofit2.http.HeaderMap;
 
 public class NetUtil implements NetInterface {
     private static volatile NetUtil netUtil;
@@ -79,12 +81,146 @@ public class NetUtil implements NetInterface {
     }
 
     @Override
-    public <T> void post(String url, NetCallBack<T> netCallBack) {
+    public <T> void get(String url, HashMap<String, String> map, NetCallBack<T> netCallBack) {
+        apiService.get(url,map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
 
+                    }
+
+                    @Override
+                    public void onNext(@NonNull ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            Type[] genericInterfaces = netCallBack.getClass().getGenericInterfaces();
+                            Type[] types = ((ParameterizedType) genericInterfaces[0]).getActualTypeArguments();
+                            Type type = types[0];
+                            netCallBack.onSuccess(new Gson().fromJson(string,type));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        netCallBack.onFail("网络异常："+e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    @Override
+    public <T> void post(String url, NetCallBack<T> netCallBack) {
+        apiService.post(url)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            Type[] genericInterfaces = netCallBack.getClass().getGenericInterfaces();
+                            Type[] types = ((ParameterizedType) genericInterfaces[0]).getActualTypeArguments();
+                            Type type = types[0];
+                            netCallBack.onSuccess(new Gson().fromJson(string,type));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        netCallBack.onFail("网络异常："+e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 
     @Override
     public <T> void post(String url, HashMap<String, String> map, NetCallBack<T> netCallBack) {
+        apiService.post(url,map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
 
+                    }
+
+                    @Override
+                    public void onNext(@NonNull ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            Type[] genericInterfaces = netCallBack.getClass().getGenericInterfaces();
+                            Type[] types = ((ParameterizedType) genericInterfaces[0]).getActualTypeArguments();
+                            Type type = types[0];
+                            netCallBack.onSuccess(new Gson().fromJson(string,type));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        netCallBack.onFail("网络异常："+e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
+    }
+
+    @Override
+    public <T> void post(String url, HashMap<String,String> header, HashMap<String, String> map, NetCallBack<T> netCallBack) {
+        apiService.post(url,header,map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Observer<ResponseBody>() {
+                    @Override
+                    public void onSubscribe(@NonNull Disposable d) {
+
+                    }
+
+                    @Override
+                    public void onNext(@NonNull ResponseBody responseBody) {
+                        try {
+                            String string = responseBody.string();
+                            Type[] genericInterfaces = netCallBack.getClass().getGenericInterfaces();
+                            Type[] types = ((ParameterizedType) genericInterfaces[0]).getActualTypeArguments();
+                            Type type = types[0];
+                            netCallBack.onSuccess(new Gson().fromJson(string,type));
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }
+
+                    @Override
+                    public void onError(@NonNull Throwable e) {
+                        netCallBack.onFail("网络异常："+e.getMessage());
+                    }
+
+                    @Override
+                    public void onComplete() {
+
+                    }
+                });
     }
 }

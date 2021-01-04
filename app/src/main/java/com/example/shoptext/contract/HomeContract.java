@@ -44,11 +44,13 @@ public class HomeContract {
     }
 
     public interface iMineView{
-        void onMineSuccess(List<LoginBean.DataBean> data);
+        String userName();
+        String passWord();
+        void onMineSuccess();
         void onMineFail(String error);
     }
     public interface iMinePresenter{
-        void getData();
+        void getData(String name,String pwd);
     }
     public interface iMineModel{
         <T> void getMineData(String url, HashMap<String,String> map, NetCallBack<T> netCallBack);
