@@ -4,6 +4,7 @@ import com.example.mylibrary.utils.NetCallBack;
 import com.example.shoptext.bean.ClassificationBean;
 import com.example.shoptext.bean.HomeBean;
 import com.example.shoptext.bean.LoginBean;
+import com.example.shoptext.bean.RefreshTokenBean;
 import com.example.shoptext.bean.SpecialBean;
 
 import java.util.HashMap;
@@ -54,5 +55,16 @@ public class HomeContract {
     }
     public interface iMineModel{
         <T> void getMineData(String url, HashMap<String,String> map, NetCallBack<T> netCallBack);
+    }
+
+    public interface iRefreshTokenView{
+        void onRefreshTokenSuccess(RefreshTokenBean redata);
+        void onRefreshTokenFail(String error);
+    }
+    public interface iRefreshTokenPresenter{
+        void getData();
+    }
+    public interface iRefreshTokenModel{
+        <T> void getRefreshTokenData(String url, HashMap<String,String> map, NetCallBack<T> netCallBack);
     }
 }

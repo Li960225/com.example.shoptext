@@ -1,5 +1,7 @@
 package com.example.mylibrary.utils;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -134,7 +136,9 @@ public class NetUtil implements NetInterface {
                             Type[] genericInterfaces = netCallBack.getClass().getGenericInterfaces();
                             Type[] types = ((ParameterizedType) genericInterfaces[0]).getActualTypeArguments();
                             Type type = types[0];
-                            netCallBack.onSuccess(new Gson().fromJson(string,type));
+                            T json = new Gson().fromJson(string, type);
+                            Log.e("TAG", "onNext: "+json);
+                            netCallBack.onSuccess(json);
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -154,6 +158,7 @@ public class NetUtil implements NetInterface {
 
     @Override
     public <T> void post(String url, HashMap<String, String> map, NetCallBack<T> netCallBack) {
+
         apiService.post(url,map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -190,6 +195,9 @@ public class NetUtil implements NetInterface {
 
     @Override
     public <T> void post(String url, HashMap<String,String> header, HashMap<String, String> map, NetCallBack<T> netCallBack) {
+        if (map==null) map=new HashMap<>();
+        if (header==null) header=new HashMap<>();
+
         apiService.post(url,header,map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())

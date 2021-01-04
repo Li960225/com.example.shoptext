@@ -7,4 +7,5 @@ public class NetConstant {
     public static String SpecialAllUrl = homeUrl + "api/topic/list?page=1&size=10";
     public static String classificationAllUrl = homeUrl + "api/catalog/index?id=1005000";
     public static String loginAllUrl = homeUrl + "api/auth/login?";
+    public static String refreshtokenAllUrl = homeUrl + "api/auth/refreshToken";
 }
