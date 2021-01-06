@@ -4,8 +4,10 @@ import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.mylibrary.base.BaseFragment;
@@ -23,6 +25,10 @@ import java.util.List;
 public class ClassificationFragment extends BaseFragment<ClassificationPresenterImp> implements HomeContract.iClassificationView,BaseView {
 
     private TabLayout tab_classification;
+    private RecyclerView rv_classification_first;
+    private RecyclerView rv_classification_second;
+    private ImageView iv_classification_img;
+    private ImageView tv_classification_title;
 
     @Override
     protected void initData() {
@@ -32,7 +38,10 @@ public class ClassificationFragment extends BaseFragment<ClassificationPresenter
     @Override
     protected void initView(View view) {
         presenter.attachView(this);
-        tab_classification = view.findViewById(R.id.tab_classification);
+        rv_classification_first = view.findViewById(R.id.rv_classification_first);
+        rv_classification_second = view.findViewById(R.id.rv_classification_second);
+        iv_classification_img = view.findViewById(R.id.iv_classification_img);
+        tv_classification_title = view.findViewById(R.id.tv_classification_title);
     }
 
     @Override
@@ -47,19 +56,7 @@ public class ClassificationFragment extends BaseFragment<ClassificationPresenter
 
     @Override
     public void onClassificationSuccess(List<ClassificationBean.DataBean.CategoryListBean> data) {
-        FragmentManager manager = getActivity().getSupportFragmentManager();
-        ArrayList<Fragment> fragments = new ArrayList<>();
-        for (int i = 0; i < data.size(); i++) {
-            ClassificationChildFragment classificationChildFragment = new ClassificationChildFragment();
-            tab_classification.addTab(tab_classification.newTab().setText(data.get(i).getName()));
-            Bundle bundle = new Bundle();
-            bundle.putInt("id",data.get(i).getId());
-            classificationChildFragment.setArguments(bundle);
-            fragments.add(classificationChildFragment);
-            manager.beginTransaction()
-                    .replace(R.id.fl_classification,fragments.get(0))
-                    .commit();
-        }
+
     }
 
     @Override

@@ -3,8 +3,8 @@ package com.example.shoptext.contract;
 import com.example.mylibrary.utils.NetCallBack;
 import com.example.shoptext.bean.ClassificationBean;
 import com.example.shoptext.bean.HomeBean;
-import com.example.shoptext.bean.LoginBean;
 import com.example.shoptext.bean.RefreshTokenBean;
+import com.example.shoptext.bean.ShoppingDataBean;
 import com.example.shoptext.bean.SpecialBean;
 
 import java.util.HashMap;
@@ -66,5 +66,16 @@ public class HomeContract {
     }
     public interface iRefreshTokenModel{
         <T> void getRefreshTokenData(String url, HashMap<String,String> map, NetCallBack<T> netCallBack);
+    }
+
+    public interface iShopDataView{
+        void onShopDataSuccess(List<ShoppingDataBean.DataBean.CartListBean> cartListDTOS);
+        void onShopDataFail(String error);
+    }
+    public interface iShopDataPresenter{
+        void getData();
+    }
+    public interface iShopDataModel{
+        <T> void getShopData(String url, HashMap<String,String> header, NetCallBack<T> netCallBack);
     }
 }

@@ -5,19 +5,34 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".fragment.ClassificationFragment">
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab_classification"
-        app:layout_constraintTop_toTopOf="parent"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_classification_first"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:orientation="vertical"
-        android:layout_width="100dp"
-        android:background="#4CAF50"
-        android:layout_height="wrap_content"/>
-    <FrameLayout
-        android:id="@+id/fl_classification"
-        app:layout_constraintLeft_toRightOf="@id/tab_classification"
-        app:layout_constraintRight_toRightOf="parent"
-        android:layout_width="0dp"
+        android:layout_width="50dp"
         android:layout_height="match_parent"/>
+    <ImageView
+        android:id="@+id/iv_classification_img"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/rv_classification_first"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_marginLeft="10dp"
+        android:layout_width="0dp"
+        android:layout_height="180dp"/>
+    <TextView
+        android:id="@+id/tv_classification_title"
+        app:layout_constraintTop_toBottomOf="@id/iv_classification_img"
+        app:layout_constraintLeft_toLeftOf="@id/iv_classification_img"
+        app:layout_constraintRight_toRightOf="@id/iv_classification_img"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_classification_second"
+        app:layout_constraintTop_toBottomOf="@id/tv_classification_title"
+        app:layout_constraintLeft_toLeftOf="@id/iv_classification_img"
+        app:layout_constraintRight_toRightOf="@id/iv_classification_img"
+        android:layout_marginTop="8dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
