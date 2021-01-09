@@ -9,11 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.shoptext.fragment.ClassificationFragment;
-import com.example.shoptext.fragment.HomeFragment;
-import com.example.shoptext.fragment.MineFragment;
-import com.example.shoptext.fragment.ShoppingFragment;
-import com.example.shoptext.fragment.SpecialFragment;
+import com.example.shoptext.classification.view.ClassificationFragment;
+import com.example.shoptext.home.view.HomeFragment;
+import com.example.shoptext.mine.view.fragment.MineFragment;
+import com.example.shoptext.shopping.view.ShoppingFragment;
+import com.example.shoptext.special.view.SpecialFragment;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 

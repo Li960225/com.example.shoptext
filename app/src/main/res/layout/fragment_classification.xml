@@ -4,10 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.ClassificationFragment">
+    tools:context=".classification.view.ClassificationFragment">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_classification_first"
         app:layout_constraintLeft_toLeftOf="parent"
+        android:layout_marginTop="30dp"
         android:layout_width="50dp"
         android:layout_height="match_parent"/>
     <ImageView

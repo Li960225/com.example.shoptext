@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#F4F4F4"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.ShoppingFragment">
+    tools:context=".shopping.view.ShoppingFragment">
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_shop_cart"
         app:layout_constraintTop_toTopOf="parent"

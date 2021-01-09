@@ -1,11 +1,12 @@
 package com.example.shoptext.contract;
 
 import com.example.mylibrary.utils.NetCallBack;
-import com.example.shoptext.bean.ClassificationBean;
-import com.example.shoptext.bean.HomeBean;
-import com.example.shoptext.bean.RefreshTokenBean;
-import com.example.shoptext.bean.ShoppingDataBean;
-import com.example.shoptext.bean.SpecialBean;
+import com.example.shoptext.classification.bean.ClassificationOneBean;
+import com.example.shoptext.classification.bean.ClassificationTwoBean;
+import com.example.shoptext.home.bean.HomeBean;
+import com.example.shoptext.mine.bean.RefreshTokenBean;
+import com.example.shoptext.shopping.bean.ShoppingDataBean;
+import com.example.shoptext.special.bean.SpecialBean;
 
 import java.util.HashMap;
 import java.util.List;
@@ -34,14 +35,18 @@ public class HomeContract {
     }
 
     public interface iClassificationView{
-        void onClassificationSuccess(List<ClassificationBean.DataBean.CategoryListBean> data);
-        void onClassificationFail(String error);
+        void onClassificationOneSuccess(List<ClassificationOneBean.DataBean.CategoryListBean> data);
+        void onClassificationOneFail(String error);
+        void onClassificationTwoSuccess(List<ClassificationTwoBean.DataBean.CurrentCategoryBean.SubCategoryListBean> data);
+        void onClassificatioTwoFail(String error);
     }
     public interface iClassificationPresenter{
-        void getData();
+        void getOneData();
+        void getTwoData(int id);
     }
     public interface iClassificationModel{
-        <T> void getClassificationData(String url, NetCallBack<T> netCallBack);
+        <T> void getClassificationOneData(String url, NetCallBack<T> netCallBack);
+        <T> void getClassificationTwoData(String url, NetCallBack<T> netCallBack);
     }
 
     public interface iMineView{

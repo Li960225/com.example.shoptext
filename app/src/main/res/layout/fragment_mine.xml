@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".fragment.MineFragment">
+    tools:context=".mine.view.fragment.MineFragment">
     <EditText
         android:id="@+id/et_mine_name"
         app:layout_constraintTop_toTopOf="parent"
