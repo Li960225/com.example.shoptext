@@ -3,6 +3,8 @@ package com.example.shoptext.contract;
 import com.example.mylibrary.utils.NetCallBack;
 import com.example.shoptext.classification.bean.ClassificationOneBean;
 import com.example.shoptext.classification.bean.ClassificationTwoBean;
+import com.example.shoptext.detailslist.bean.DetailsBean;
+import com.example.shoptext.detailslist.bean.DetailsListBean;
 import com.example.shoptext.home.bean.HomeBean;
 import com.example.shoptext.mine.bean.RefreshTokenBean;
 import com.example.shoptext.shopping.bean.ShoppingDataBean;
@@ -82,5 +84,27 @@ public class HomeContract {
     }
     public interface iShopDataModel{
         <T> void getShopData(String url, HashMap<String,String> header, NetCallBack<T> netCallBack);
+    }
+
+    public interface iDetailsListView{
+        void onDetailsListSuccess(List<DetailsListBean.DataBean.BrotherCategoryBean> brotherCategoryBeans);
+        void onDetailsListFail(String error);
+    }
+    public interface iDetailsListPresenter{
+        void getData(int id);
+    }
+    public interface iDetailsListModel{
+        <T> void getDetailsList(String url, NetCallBack<T> netCallBack);
+    }
+
+    public interface iDetailsView{
+        void onDetailsSuccess(List<DetailsBean.DataBean.DataBeans> cartListDTOS);
+        void onDetailsFail(String error);
+    }
+    public interface iDetailsPresenter{
+        void getData(int id,int page,int sizes);
+    }
+    public interface iDetailsModel{
+        <T> void getDetailsData(String url, HashMap<String,String> map, NetCallBack<T> netCallBack);
     }
 }

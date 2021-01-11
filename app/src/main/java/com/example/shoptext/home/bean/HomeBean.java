@@ -214,6 +214,16 @@ public class HomeBean {
             private String icon_url;
             private Integer sort_order;
 
+            public Integer getCategoryid() {
+                return categoryid;
+            }
+
+            public void setCategoryid(Integer categoryid) {
+                this.categoryid = categoryid;
+            }
+
+            private Integer categoryid;
+
             public Integer getId() {
                 return id;
             }

@@ -114,7 +114,7 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
             @Override
             public void onClick(int position) {
                 Intent intent = new Intent(getActivity(), DetailsListActivity.class);
-                intent.putExtra("homeId",channelBeans.get(position).getId());
+                intent.putExtra("homeId",channelBeans.get(position).getCategoryid());
                 startActivity(intent);
             }
         });
