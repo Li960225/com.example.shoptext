@@ -29,8 +29,7 @@ public class ShoppingFragment extends BaseFragment<ShoppingPresenterImp> impleme
     private TextView tv_shop_price_sum;
     private TextView tv_shop_edit;
     private TextView tv_shop_commit;
-    private int shop_sum = 0;
-    private double price_sum = 0;
+    private int isEdit = 1;
 
     @Override
     protected void initData() {
@@ -46,6 +45,7 @@ public class ShoppingFragment extends BaseFragment<ShoppingPresenterImp> impleme
         tv_shop_price_sum = view.findViewById(R.id.tv_shop_price_sum);
         tv_shop_edit = view.findViewById(R.id.tv_shop_edit);
         tv_shop_commit = view.findViewById(R.id.tv_shop_commit);
+        tv_shop_edit.setOnClickListener(this);
 
         cartListDTOS = new ArrayList<>();
         rv_shop_cart.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -88,15 +88,21 @@ public class ShoppingFragment extends BaseFragment<ShoppingPresenterImp> impleme
 
     @Override
     public void onChoice() {
+        int shop_sum = 0;
+        double price_sum = 0;
         for (int i = 0; i < cartListDTOS.size(); i++) {
-
             if(cartListDTOS.get(i).isIschecked()){
-                price_sum+= cartListDTOS.get(i).getRetailPrice();
-                shop_sum +=1;
+                price_sum += cartListDTOS.get(i).getRetailPrice();
+                shop_sum++;
             }
         }
-        tv_shop_price_sum.setText("￥"+cartListDTOS);
+        tv_shop_price_sum.setText("￥"+price_sum);
         tv_shop_number_sum.setText("全选("+shop_sum+")");
+    }
+
+    @Override
+    public int onVisable() {
+        return isEdit;
     }
 
     @Override
@@ -104,15 +110,28 @@ public class ShoppingFragment extends BaseFragment<ShoppingPresenterImp> impleme
         switch (v.getId()){
             case R.id.cb_shop_all_choice:
                 if (cb_shop_all_choice.isChecked()){
-                    cb_shop_all_choice.setChecked(false);
-                    for (int i = 0; i < cartListDTOS.size(); i++) {
-                        cartListDTOS.get(i).setIschecked(false);
-                    }
-                }else {
                     cb_shop_all_choice.setChecked(true);
                     for (int i = 0; i < cartListDTOS.size(); i++) {
                         cartListDTOS.get(i).setIschecked(true);
                     }
+                }else {
+                    cb_shop_all_choice.setChecked(false);
+                    for (int i = 0; i < cartListDTOS.size(); i++) {
+                        cartListDTOS.get(i).setIschecked(false);
+                    }
+                }
+                shoppingDataAdapter.notifyDataSetChanged();
+                onChoice();
+                break;
+            case R.id.tv_shop_edit:
+                if (tv_shop_edit.getText().toString().equals("编辑")){
+                    isEdit = 2;
+                    tv_shop_edit.setText("完成");
+                    onVisable();
+                }else {
+                    isEdit = 1;
+                    tv_shop_edit.setText("编辑");
+                    onVisable();
                 }
                 break;
         }

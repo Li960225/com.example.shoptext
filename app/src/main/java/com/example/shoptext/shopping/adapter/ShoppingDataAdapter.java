@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.shoptext.R;
 import com.example.shoptext.shopping.bean.ShoppingDataBean;
+import com.example.shoptext.shopping.view.ShoppingFragment;
 
 import java.util.List;
 
@@ -57,6 +59,13 @@ public class ShoppingDataAdapter extends RecyclerView.Adapter<ShoppingDataAdapte
                 onChoiceItemListener.onChoice();
             }
         });
+        ShoppingFragment shoppingFragment = new ShoppingFragment();
+        int is = shoppingFragment.onVisable();
+        if (is == 2){
+            holder.ll_shop_data_cart.setVisibility(View.VISIBLE);
+        }else {
+            holder.ll_shop_data_cart.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -70,6 +79,10 @@ public class ShoppingDataAdapter extends RecyclerView.Adapter<ShoppingDataAdapte
         private TextView tv_shop_data_title;
         private TextView tv_shop_data_price;
         private TextView tv_shop_data_number;
+        private LinearLayout ll_shop_data_cart;
+        private TextView tv_shop_up;
+        private TextView tv_shop_num;
+        private TextView tv_shop_down;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             cb_shop_data_choice = itemView.findViewById(R.id.cb_shop_data_choice);
@@ -77,10 +90,15 @@ public class ShoppingDataAdapter extends RecyclerView.Adapter<ShoppingDataAdapte
             tv_shop_data_title = itemView.findViewById(R.id.tv_shop_data_title);
             tv_shop_data_price = itemView.findViewById(R.id.tv_shop_data_price);
             tv_shop_data_number = itemView.findViewById(R.id.tv_shop_data_number);
+            ll_shop_data_cart = itemView.findViewById(R.id.ll_shop_data_cart);
+            tv_shop_up = itemView.findViewById(R.id.tv_shop_up);
+            tv_shop_num = itemView.findViewById(R.id.tv_shop_num);
+            tv_shop_down = itemView.findViewById(R.id.tv_shop_down);
         }
     }
 
     public interface OnChoiceItemListener{
         void onChoice();
+        int onVisable();
     }
 }

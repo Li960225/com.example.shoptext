@@ -1,5 +1,6 @@
 package com.example.shoptext.home.view;
 
+import android.content.Intent;
 import android.graphics.Color;
 
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,6 +17,7 @@ import com.alibaba.android.vlayout.layout.SingleLayoutHelper;
 import com.example.mylibrary.base.BaseFragment;
 import com.example.mylibrary.base.BaseView;
 import com.example.shoptext.R;
+import com.example.shoptext.detailslist.view.DetailsListActivity;
 import com.example.shoptext.home.adapter.EighthAdapter;
 import com.example.shoptext.home.adapter.EleventhAdapter;
 import com.example.shoptext.home.adapter.FifthAdapter;
@@ -111,7 +113,9 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
         thirdAdapter.setOnClickListener(new ThirdAdapter.OnClickListener() {
             @Override
             public void onClick(int position) {
-
+                Intent intent = new Intent(getActivity(), DetailsListActivity.class);
+                intent.putExtra("homeId",channelBeans.get(position).getId());
+                startActivity(intent);
             }
         });
         fifthAdapter.setOnClickListener(new FifthAdapter.OnClickListener() {
@@ -340,6 +344,7 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
         List<HomeBean.DataBean.CategoryListBean> categoryList = data.getCategoryList();
         categoryListBeans.addAll(categoryList);
         twelfthAdapter.notifyDataSetChanged();
+        delegateAdapter.notifyDataSetChanged();
     }
 
     @Override

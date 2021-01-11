@@ -70,6 +70,6 @@ public class ThirteenthAdapter extends RecyclerView.Adapter<ThirteenthAdapter.Vi
     }
 
     public interface OnClickListener1{
-        void onClick(int position);
+        void onClick(int positio);
     }
 }

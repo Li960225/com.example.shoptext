@@ -23,7 +23,6 @@ public class TwelfthAdapter extends DelegateAdapter.Adapter {
     private SingleLayoutHelper singleLayoutHelper;
     private List<HomeBean.DataBean.CategoryListBean> mData;
     private OnClickListener onClickListener;
-    private int pos;
 
     public void setOnClickListener(OnClickListener onClickListener) {
         this.onClickListener = onClickListener;
@@ -52,15 +51,17 @@ public class TwelfthAdapter extends DelegateAdapter.Adapter {
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         ViewHolder_o viewHolder_o = (ViewHolder_o) holder;
         viewHolder_o.tv_title_o.setText(mData.get(position).getName());
+
         RecyclerView rvtwelfth = viewHolder_o.rvtwelfth;
         rvtwelfth.setLayoutManager(new GridLayoutManager(mContext,2));
         ThirteenthAdapter thirteenthAdapter = new ThirteenthAdapter(mContext, mData.get(position).getGoodsList());
         rvtwelfth.setAdapter(thirteenthAdapter);
-        pos = position;
+
+        int pos = position;
         thirteenthAdapter.setOnClickListener(new ThirteenthAdapter.OnClickListener1() {
             @Override
-            public void onClick(int position) {
-                onClickListener.onClick(pos,position);
+            public void onClick(int positio) {
+                onClickListener.onClick(pos,positio);
             }
         });
     }
