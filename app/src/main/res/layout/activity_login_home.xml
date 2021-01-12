@@ -5,5 +5,25 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".mine.view.activity.LoginHomeActivity">
+    <EditText
+        android:id="@+id/et_mine_name"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入账号"/>
+    <EditText
+        android:id="@+id/et_mine_pwd"
+        app:layout_constraintTop_toBottomOf="@id/et_mine_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="请输入密码"/>
+    <Button
+        android:id="@+id/btn_mine_login"
+        app:layout_constraintTop_toBottomOf="@id/et_mine_pwd"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="登录"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

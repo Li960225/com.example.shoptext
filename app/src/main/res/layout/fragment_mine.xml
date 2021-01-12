@@ -5,25 +5,26 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".mine.view.fragment.MineFragment">
-    <EditText
-        android:id="@+id/et_mine_name"
+    <ImageView
+        android:id="@+id/iv_mine_header_img"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="请输入账号"/>
-    <EditText
-        android:id="@+id/et_mine_pwd"
-        app:layout_constraintTop_toBottomOf="@id/et_mine_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="请输入密码"/>
-    <Button
-        android:id="@+id/btn_mine_login"
-        app:layout_constraintTop_toBottomOf="@id/et_mine_pwd"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="100dp"
+        android:layout_height="100dp"/>
+    <TextView
+        android:id="@+id/tv_mine_header_longin"
+        app:layout_constraintTop_toTopOf="@id/iv_mine_header_img"
+        app:layout_constraintBottom_toBottomOf="@id/iv_mine_header_img"
+        app:layout_constraintLeft_toRightOf="@id/iv_mine_header_img"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="登录"/>
+        android:layout_height="wrap_content"/>
+    <ImageView
+        android:id="@+id/iv_mine_header_forward"
+        app:layout_constraintTop_toTopOf="@id/iv_mine_header_img"
+        app:layout_constraintBottom_toBottomOf="@id/iv_mine_header_img"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_width="15dp"
+        android:layout_height="15dp"
+        android:src="@drawable/ic_forward"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

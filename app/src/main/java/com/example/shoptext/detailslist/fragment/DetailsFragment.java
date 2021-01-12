@@ -1,5 +1,6 @@
 package com.example.shoptext.detailslist.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -17,6 +18,7 @@ import com.example.shoptext.contract.HomeContract;
 import com.example.shoptext.detailslist.adapter.DetailsAdapter;
 import com.example.shoptext.detailslist.bean.DetailsBean;
 import com.example.shoptext.detailslist.presenter.DetailsPresenter;
+import com.example.shoptext.detailslist.view.DetailsContentActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +52,9 @@ public class DetailsFragment extends BaseFragment<DetailsPresenter> implements H
         detailsAdapter.setOnClickItemListener(new DetailsAdapter.OnClickItemListener() {
             @Override
             public void onClick(int position) {
-                
+                Intent intent = new Intent(getActivity(), DetailsContentActivity.class);
+                intent.putExtra("detailsId",list.get(position).getId());
+                startActivity(intent);
             }
         });
     }

@@ -56,9 +56,7 @@ public class ClassificationFragment extends BaseFragment<ClassificationOnePresen
         rv_classification_second.setLayoutManager(new GridLayoutManager(getActivity(),3));
         classificationTwoAdapter = new ClassificationTwoAdapter(getActivity(), subCategoryListBeans);
         rv_classification_second.setAdapter(classificationTwoAdapter);
-
         presenter.getTwoData(1005000);
-        classificationTwoAdapter.notifyDataSetChanged();
 
         initListener();
     }

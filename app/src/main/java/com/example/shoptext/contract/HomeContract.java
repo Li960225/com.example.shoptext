@@ -3,7 +3,9 @@ package com.example.shoptext.contract;
 import com.example.mylibrary.utils.NetCallBack;
 import com.example.shoptext.classification.bean.ClassificationOneBean;
 import com.example.shoptext.classification.bean.ClassificationTwoBean;
+import com.example.shoptext.detailslist.bean.AddShopBean;
 import com.example.shoptext.detailslist.bean.DetailsBean;
+import com.example.shoptext.detailslist.bean.DetailsContentBean;
 import com.example.shoptext.detailslist.bean.DetailsListBean;
 import com.example.shoptext.home.bean.HomeBean;
 import com.example.shoptext.mine.bean.RefreshTokenBean;
@@ -51,17 +53,17 @@ public class HomeContract {
         <T> void getClassificationTwoData(String url, NetCallBack<T> netCallBack);
     }
 
-    public interface iMineView{
+    public interface iLoginHomeView{
         String userName();
         String passWord();
-        void onMineSuccess();
-        void onMineFail(String error);
+        void onLoginHomeSuccess();
+        void onLoginHomeFail(String error);
     }
-    public interface iMinePresenter{
+    public interface iLoginHomePresenter{
         void getData(String name,String pwd);
     }
-    public interface iMineModel{
-        <T> void getMineData(String url, HashMap<String,String> map, NetCallBack<T> netCallBack);
+    public interface iLoginHomeModel{
+        <T> void getLoginHomeData(String url, HashMap<String,String> map, NetCallBack<T> netCallBack);
     }
 
     public interface iRefreshTokenView{
@@ -106,5 +108,20 @@ public class HomeContract {
     }
     public interface iDetailsModel{
         <T> void getDetailsData(String url, HashMap<String,String> map, NetCallBack<T> netCallBack);
+    }
+
+    public interface iDetailsContentView{
+        void onDetailsContentSuccess(DetailsContentBean.DataBean.InfoBean infoBeans);
+        void onDetailsContentFail(String error);
+        void onAddShopSuccess(List<AddShopBean.DataBean.CartListBean> cartListBeans);
+        void onAddShopFail(String error);
+    }
+    public interface iDetailsContentPresenter{
+        void getData(int id);
+        void getAddData();
+    }
+    public interface iDetailsContentModel{
+        <T> void getDetailsContentData(String url, NetCallBack<T> netCallBack);
+        <T> void getAddShopData(String url, NetCallBack<T> netCallBack);
     }
 }
