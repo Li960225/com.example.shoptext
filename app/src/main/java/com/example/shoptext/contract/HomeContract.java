@@ -9,6 +9,7 @@ import com.example.shoptext.detailslist.bean.DetailsContentBean;
 import com.example.shoptext.detailslist.bean.DetailsListBean;
 import com.example.shoptext.home.bean.HomeBean;
 import com.example.shoptext.mine.bean.RefreshTokenBean;
+import com.example.shoptext.register.bean.RegisterBean;
 import com.example.shoptext.shopping.bean.ShoppingDataBean;
 import com.example.shoptext.special.bean.SpecialBean;
 
@@ -111,7 +112,7 @@ public class HomeContract {
     }
 
     public interface iDetailsContentView{
-        void onDetailsContentSuccess(DetailsContentBean.DataBean.InfoBean infoBeans);
+        void onDetailsContentSuccess(DetailsContentBean.DataBean dataBean);
         void onDetailsContentFail(String error);
         void onAddShopSuccess(List<AddShopBean.DataBean.CartListBean> cartListBeans);
         void onAddShopFail(String error);
@@ -123,5 +124,16 @@ public class HomeContract {
     public interface iDetailsContentModel{
         <T> void getDetailsContentData(String url, NetCallBack<T> netCallBack);
         <T> void getAddShopData(String url, NetCallBack<T> netCallBack);
+    }
+
+    public interface iRegisterView{
+        void onRegisterSuccess(RegisterBean registerBean);
+        void onRegisterFail(String error);
+    }
+    public interface iRegisterPresenter{
+        void getData(String name,String password,String isPassword);
+    }
+    public interface iRegisterModel{
+        <T> void getRegisterData(String url,HashMap<String,String> map, NetCallBack<T> netCallBack);
     }
 }

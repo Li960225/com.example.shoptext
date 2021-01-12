@@ -22,8 +22,8 @@ public class DetailsContentPresenter extends BasePresenter<DetailsContentActivit
         getModel().getDetailsContentData(NetConstant.detailsContentAllUrl + "?id=" + id, new NetCallBack<DetailsContentBean>() {
             @Override
             public void onSuccess(DetailsContentBean detailsContentBean) {
-                DetailsContentBean.DataBean.InfoBean info = detailsContentBean.getData().getInfo();
-                iView.onDetailsContentSuccess(info);
+                DetailsContentBean.DataBean dataBean = detailsContentBean.getData();
+                iView.onDetailsContentSuccess(dataBean);
             }
 
             @Override

@@ -4,32 +4,33 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".mine.view.activity.LoginHomeActivity">
+    tools:context=".register.view.RegisterActivity">
     <EditText
-        android:id="@+id/et_mine_name"
+        android:id="@+id/et_register_name"
         app:layout_constraintTop_toTopOf="parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="请输入账号"/>
     <EditText
-        android:id="@+id/et_mine_pwd"
-        app:layout_constraintTop_toBottomOf="@id/et_mine_name"
+        android:id="@+id/et_register_password"
+        app:layout_constraintTop_toBottomOf="@id/et_register_name"
+        android:layout_marginTop="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="请输入密码"/>
-    <Button
-        android:id="@+id/btn_mine_login"
-        app:layout_constraintTop_toBottomOf="@id/et_mine_pwd"
-        app:layout_constraintLeft_toLeftOf="parent"
-        android:layout_marginLeft="80dp"
-        android:layout_width="wrap_content"
+    <EditText
+        android:id="@+id/et_register_ispassword"
+        app:layout_constraintTop_toBottomOf="@id/et_register_password"
+        android:layout_marginTop="10dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="登录"/>
+        android:hint="请输入确认密码"/>
     <Button
-        android:id="@+id/btn_mine_register"
-        app:layout_constraintTop_toBottomOf="@id/et_mine_pwd"
+        android:id="@+id/btn_register"
+        app:layout_constraintTop_toBottomOf="@id/et_register_ispassword"
+        android:layout_marginTop="10dp"
+        app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:layout_marginRight="80dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="注册"/>

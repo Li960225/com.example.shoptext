@@ -17,11 +17,13 @@ import com.example.shoptext.MainActivity;
 import com.example.shoptext.R;
 import com.example.shoptext.contract.HomeContract;
 import com.example.shoptext.mine.presenter.LoginHomePresenterImp;
+import com.example.shoptext.register.view.RegisterActivity;
 
 public class LoginHomeActivity extends BaseActivity<LoginHomePresenterImp> implements HomeContract.iLoginHomeView, BaseView, View.OnClickListener {
     private EditText et_mine_name;
     private EditText et_mine_pwd;
     private Button btn_mine_login;
+    private Button btn_mine_register;
 
     @Override
     protected void initData() {
@@ -34,7 +36,9 @@ public class LoginHomeActivity extends BaseActivity<LoginHomePresenterImp> imple
         et_mine_name = findViewById(R.id.et_mine_name);
         et_mine_pwd = findViewById(R.id.et_mine_pwd);
         btn_mine_login = findViewById(R.id.btn_mine_login);
+        btn_mine_register = findViewById(R.id.btn_mine_register);
         btn_mine_login.setOnClickListener(this);
+        btn_mine_register.setOnClickListener(this);
     }
 
     @Override
@@ -55,6 +59,9 @@ public class LoginHomeActivity extends BaseActivity<LoginHomePresenterImp> imple
             }else {
                 Toast.makeText(this, "账号密码不能为空", Toast.LENGTH_SHORT).show();
             }
+        }
+        if (v.getId()==R.id.btn_mine_register){
+            startActivity(new Intent(LoginHomeActivity.this, RegisterActivity.class));
         }
     }
 

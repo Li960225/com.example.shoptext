@@ -21,13 +21,6 @@ import java.util.List;
 
 public class DetailsContentActivity extends BaseActivity<DetailsContentPresenter> implements HomeContract.iDetailsContentView, BaseView {
 
-    private Banner bannerDetailsContent;
-    private LinearLayout llDetailsContent;
-    private TextView tvDetailsContentTitle;
-    private TextView tvDetailsContentSubtitle;
-    private TextView tvDetailsContentPrice;
-    private TextView tv_details_content_add;
-
     @Override
     protected void initData() {
         int detailsId = getIntent().getIntExtra("detailsId", 0);
@@ -37,20 +30,6 @@ public class DetailsContentActivity extends BaseActivity<DetailsContentPresenter
     @Override
     protected void initView() {
         presenter.attachView(this);
-        bannerDetailsContent = findViewById(R.id.banner_details_content);
-        llDetailsContent = findViewById(R.id.ll_details_content);
-        tvDetailsContentTitle = findViewById(R.id.tv_details_content_title);
-        tvDetailsContentSubtitle = findViewById(R.id.tv_details_content_subtitle);
-        tvDetailsContentPrice = findViewById(R.id.tv_details_content_price);
-        tv_details_content_add = findViewById(R.id.tv_details_content_add);
-
-        tv_details_content_add.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                presenter.getAddData();
-                Toast.makeText(DetailsContentActivity.this, "添加成功", Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 
     @Override
@@ -64,10 +43,7 @@ public class DetailsContentActivity extends BaseActivity<DetailsContentPresenter
     }
 
     @Override
-    public void onDetailsContentSuccess(DetailsContentBean.DataBean.InfoBean infoBeans) {
-        tvDetailsContentTitle.setText(infoBeans.getName());
-        tvDetailsContentSubtitle.setText(infoBeans.getGoodsBrief());
-        tvDetailsContentPrice.setText("￥"+infoBeans.getRetailPrice());
+    public void onDetailsContentSuccess(DetailsContentBean.DataBean dataBean) {
     }
 
     @Override

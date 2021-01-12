@@ -14,4 +14,5 @@ public class NetConstant {
     public static String detailsDataAllUrl = homeUrl + "api/goods/list";
     public static String detailsContentAllUrl = homeUrl + "api/goods/detail";
     public static String addShopAllUrl = homeUrl + "api/cart/add";
+    public static String registerAllUrl = homeUrl + "api/auth/register";
 }
