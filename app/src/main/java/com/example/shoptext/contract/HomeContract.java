@@ -8,6 +8,7 @@ import com.example.shoptext.detailslist.bean.DetailsBean;
 import com.example.shoptext.detailslist.bean.DetailsContentBean;
 import com.example.shoptext.detailslist.bean.DetailsListBean;
 import com.example.shoptext.home.bean.HomeBean;
+import com.example.shoptext.home.bean.HomeDetailsBean;
 import com.example.shoptext.mine.bean.RefreshTokenBean;
 import com.example.shoptext.register.bean.RegisterBean;
 import com.example.shoptext.shopping.bean.ShoppingDataBean;
@@ -135,5 +136,16 @@ public class HomeContract {
     }
     public interface iRegisterModel{
         <T> void getRegisterData(String url,HashMap<String,String> map, NetCallBack<T> netCallBack);
+    }
+
+    public interface iHomeDetailsView{
+        void onHomeDetailsSuccess(HomeDetailsBean.DataBean.BrandBean brandBean);
+        void onHomeDetailsFail(String error);
+    }
+    public interface iHomeDetailsPresenter{
+        void getData(int id);
+    }
+    public interface iHomeDetailsModel{
+        <T> void getHomeDetailsData(String url, NetCallBack<T> netCallBack);
     }
 }

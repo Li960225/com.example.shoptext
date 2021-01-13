@@ -12,7 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ShopText">
-        <activity android:name=".register.view.RegisterActivity"></activity>
+        <activity android:name=".home.homelistener.HomeDetailsFifthActivity"></activity>
+        <activity android:name=".classification.view.ClassificationListActivity" />
+        <activity android:name=".register.view.RegisterActivity" />
         <activity android:name=".detailslist.view.DetailsContentActivity" />
         <activity android:name=".detailslist.view.DetailsListActivity" />
         <activity android:name=".mine.view.activity.LoginHomeActivity" />

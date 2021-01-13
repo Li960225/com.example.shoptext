@@ -4,6 +4,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -23,7 +24,7 @@ import com.example.shoptext.classification.presenter.ClassificationOnePresenterI
 import java.util.ArrayList;
 import java.util.List;
 
-public class ClassificationFragment extends BaseFragment<ClassificationOnePresenterImp> implements HomeContract.iClassificationView, BaseView, ClassificationOneAdapter.OnClickItemOneListener {
+public class ClassificationFragment extends BaseFragment<ClassificationOnePresenterImp> implements HomeContract.iClassificationView, BaseView, ClassificationOneAdapter.OnClickItemOneListener, ClassificationTwoAdapter.OnClickItemTwoListener {
 
     private RecyclerView rv_classification_first;
     private RecyclerView rv_classification_second;
@@ -63,6 +64,7 @@ public class ClassificationFragment extends BaseFragment<ClassificationOnePresen
 
     private void initListener() {
         classificationOneAdapter.setOnClickItemOneListener(this);
+        classificationTwoAdapter.setOnClickItemTwoListener(this);
     }
 
     @Override
@@ -116,5 +118,10 @@ public class ClassificationFragment extends BaseFragment<ClassificationOnePresen
         tv_classification_title.setText("————"+categoryListBeans.get(position).getName()+"分类————");
         int id = categoryListBeans.get(position).getId();
         presenter.getTwoData(id);
+    }
+
+    @Override
+    public void onClickTwo(int position) {
+        startActivity(new Intent(getActivity(),ClassificationListActivity.class));
     }
 }

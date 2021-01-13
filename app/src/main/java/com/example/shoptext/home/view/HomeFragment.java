@@ -32,6 +32,7 @@ import com.example.shoptext.home.adapter.ThirdAdapter;
 import com.example.shoptext.home.adapter.TwelfthAdapter;
 import com.example.shoptext.contract.HomeContract;
 import com.example.shoptext.home.bean.HomeBean;
+import com.example.shoptext.home.homelistener.HomeDetailsFifthActivity;
 import com.example.shoptext.home.presenter.HomePresenterImp;
 
 import java.util.ArrayList;
@@ -121,7 +122,9 @@ public class HomeFragment extends BaseFragment<HomePresenterImp> implements Home
         fifthAdapter.setOnClickListener(new FifthAdapter.OnClickListener() {
             @Override
             public void onClick(int position) {
-
+                Intent intent = new Intent(getActivity(), HomeDetailsFifthActivity.class);
+                intent.putExtra("homedetailsId",brandListBeans.get(position).getId());
+                startActivity(intent);
             }
         });
         seventhAdapter.setOnClickListener(new SeventhAdapter.OnClickListener() {
